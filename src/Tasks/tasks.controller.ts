@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
 import { TasksService } from "./tasks.service";
-import { Tasks as TasksModel} from "@prisma/client";
 
 @Controller("tasks")
 export class TasksController{
