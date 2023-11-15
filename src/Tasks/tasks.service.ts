@@ -37,7 +37,7 @@ export class TasksService{
         taskCompleted: boolean){
             try{
             const resultTask=await this.prisma.tasks.findUnique({where: {id: Number(taskId)}});
-            return this.prisma.tasks.update({
+            return await this.prisma.tasks.update({
                 data:{
                     title: taskTitle || resultTask.title,
                     description: taskDescription || resultTask.description,
