@@ -37,7 +37,7 @@ export class TasksService{
         taskCompleted: boolean){
             try{
             const resultTask: Tasks=await this.prisma.tasks.findUnique({where: {id: Number(taskId)}});
-            await this.prisma.tasks.update({
+            const newTask: Tasks=await this.prisma.tasks.update({
                 data:{
                     title: taskTitle || resultTask.title,
                     description: taskDescription || resultTask.description,
@@ -45,7 +45,7 @@ export class TasksService{
                 },
                 where: {id: Number(taskId)}
             });
-            return "Task updated";
+            return newTask;
             }catch (error){
                 throw new NotFoundException("No task with this Id");
             }
